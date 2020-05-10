@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">ChatiFy</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">ChatiFy</string>
+    <string name="nav_header_subtitle">ChatiFy Dev Team</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+
+    <string name="home_second">Home Second</string>
+    <string name="room_0">Song Chat</string>
+    <string name="room_1">Album Chat</string>
+    <string name="room2">Artist Chat</string>
+    <string name="room3">Genre Chat</string>
+    <string name="fav_artists">Define Your Favorite Artists</string>
+    <string name="get_recomm">Get Recommendation</string>
+    <string name="get_premium">Get Premium</string>
+    <string name="app_set">App Settings</string>
+    <string name="acc_set">Account Settings</string>
+    <string name="title_activity_app_settings">Settings</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="app_set_0">App Notifications</string>
+    <string name="app_set_1">Send Anonymous User Data</string>
+    <string name="app_set_2">Country-Based Chat</string>
+    <string name="app_set_3">Language-Based Chat</string>
+    <string name="app_set_4">Screen Rotation Lock</string>
+</resources>

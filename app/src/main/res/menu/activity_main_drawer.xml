@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group
+        android:id="@+id/room_group"
+        android:checkableBehavior="single"
+        android:enabled="false">
+        <item android:title="@string/room_0" />
+        <item android:title="@string/room_1" />
+        <item android:title="@string/room2" />
+        <item android:title="@string/room3" />
+        <item android:title="@string/fav_artists" />
+        <item android:title="@string/get_recomm" />
+    </group>
+    <group android:id="@+id/options_group" >
+        <item
+            android:enabled="true"
+            android:icon="@mipmap/premium_icon_foreground"
+            android:title="@string/get_premium"
+            android:visible="true"
+            app:showAsAction="always" />
+        <item
+            android:icon="@drawable/ic_menu_manage"
+            android:title="@string/app_set" />
+        <item
+            android:icon="@drawable/ic_menu_manage"
+            android:title="@string/acc_set" />
+    </group>
+</menu>
