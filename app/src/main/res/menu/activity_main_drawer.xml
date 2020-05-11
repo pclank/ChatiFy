@@ -23,6 +23,7 @@
             android:visible="true"
             app:showAsAction="always" />
         <item
+            android:id="@+id/appSettingsActivity"
             android:icon="@drawable/ic_menu_manage"
             android:title="@string/app_set" />
         <item

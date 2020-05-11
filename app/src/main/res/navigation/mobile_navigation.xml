@@ -44,4 +44,9 @@
         android:id="@+id/appSettingsActivity"
         android:name="com.example.chatify.AppSettingsActivity"
         android:label="AppSettingsActivity" />
+    <fragment
+        android:id="@+id/appSettings"
+        android:name="com.example.chatify.ui.appsettings.AppSettings"
+        android:label="app_settings_fragment"
+        tools:layout="@layout/app_settings_fragment" />
 </navigation>
