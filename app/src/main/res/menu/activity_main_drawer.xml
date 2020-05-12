@@ -7,12 +7,22 @@
     <group
         android:id="@+id/room_group"
         android:checkableBehavior="single"
-        android:enabled="false">
-        <item android:title="@string/room_0" />
-        <item android:title="@string/room_1" />
-        <item android:title="@string/room2" />
-        <item android:title="@string/room3" />
-        <item android:title="@string/fav_artists" />
+        android:enabled="true">
+        <item
+            android:id="@+id/songChatFragment"
+            android:title="@string/room_0" />
+        <item
+            android:id="@+id/albumChatFragment"
+            android:title="@string/room_1" />
+        <item
+            android:id="@+id/artistChatFragment"
+            android:title="@string/room2" />
+        <item
+            android:id="@+id/genreChatFragment"
+            android:title="@string/room3" />
+        <item
+            android:id="@+id/favoriteArtistsActivity"
+            android:title="@string/fav_artists" />
         <item android:title="@string/get_recomm" />
     </group>
     <group android:id="@+id/options_group" >

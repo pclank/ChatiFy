@@ -42,4 +42,5 @@
     <string name="app_set_2">Country-Based Chat</string>
     <string name="app_set_3">Language-Based Chat</string>
     <string name="app_set_4">Screen Rotation Lock</string>
+    <string name="user_message_default">Write a message</string>
 </resources>

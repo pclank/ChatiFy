@@ -49,4 +49,21 @@
         android:name="com.example.chatify.ui.appsettings.AppSettings"
         android:label="app_settings_fragment"
         tools:layout="@layout/app_settings_fragment" />
+    <fragment
+        android:id="@+id/songChatFragment"
+        android:name="com.example.chatify.ui.songChat.SongChatFragment"
+        android:label="song_chat_fragment"
+        tools:layout="@layout/song_chat_fragment" />
+    <fragment
+        android:id="@+id/albumChatFragment"
+        android:name="com.example.chatify.ui.albumChat.AlbumChatFragment"
+        android:label="AlbumChatFragment" />
+    <fragment
+        android:id="@+id/artistChatFragment"
+        android:name="com.example.chatify.ui.artistChat.ArtistChatFragment"
+        android:label="ArtistChatFragment" />
+    <fragment
+        android:id="@+id/genreChatFragment"
+        android:name="com.example.chatify.ui.genreChat.GenreChatFragment"
+        android:label="GenreChatFragment" />
 </navigation>
