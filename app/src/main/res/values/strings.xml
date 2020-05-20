@@ -18,7 +18,21 @@
     <string name="room3">Genre Chat</string>
     <string name="fav_artists">Define Your Favorite Artists</string>
     <string name="get_recomm">Get Recommendation</string>
+
     <string name="get_premium">Get Premium</string>
+    <string name="premium_includes">Premium Subscription includes:</string>
+    <string name="no_ads">-Ad-free ChatiFy experience</string>
+    <string name="concerts">-Ability to search for nearby concerts</string>
+    <string name="upcoming_releases">-Reminders about upcoming releases</string>
+    <string name="supporting">-Supporting your favourite developers :)</string>
+    <string name="onetime_package">One-time Subscription for 0.99$</string>
+    <string name="buy_now">Buy now</string>
+
+    <string name="card_number">Card Number</string>
+    <string name="card_name">Name on Card</string>
+    <string name="exp_date">Expiration Date</string>
+    <string name="CVV">CVV</string>
+
     <string name="app_set">App Settings</string>
     <string name="acc_set">Account Settings</string>
     <string name="title_activity_app_settings">Settings</string>

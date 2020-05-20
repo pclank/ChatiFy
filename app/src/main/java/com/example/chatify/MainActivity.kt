@@ -57,11 +57,19 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    private fun checkForPremiumPackages(): Array<String> {
+        val foundPackages = arrayOf("package1", "package2", "package3");
+        return foundPackages
+    }
 
     fun getPremiumButton(item: MenuItem) {
 
-        val intent = Intent(this, GetPremium::class.java)
-        startActivity(intent)
+        val premiumPackages = checkForPremiumPackages();
+
+        if (premiumPackages.isNotEmpty()) {
+            val intent = Intent(this, GetPremium::class.java)
+            startActivity(intent)
+        }
     }
 
 }
