@@ -21,6 +21,7 @@
         </activity>
         <activity android:name=".AppSettingsActivity" />
         <activity android:name=".GetPremium" />
+        <activity android:name=".PaymentActivity" />
     </application>
 
 </manifest>
