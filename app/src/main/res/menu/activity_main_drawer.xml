@@ -27,11 +27,11 @@
     </group>
     <group android:id="@+id/options_group" >
         <item
-            android:enabled="true"
+            android:id="@+id/GetPremium"
+            android:actionLayout="@layout/get_premium"
             android:icon="@mipmap/premium_icon_foreground"
-            android:title="@string/get_premium"
-            android:visible="true"
-            app:showAsAction="always" />
+            android:onClick="getPremiumButton"
+            android:title="@string/get_premium" />
         <item
             android:id="@+id/appSettingsActivity"
             android:icon="@drawable/ic_menu_manage"

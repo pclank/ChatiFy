@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(setOf(
-                R.id.songChatFragment, R.id.albumChatFragment, R.id.artistChatFragment, R.id.genreChatFragment, R.id.appSettingsActivity, R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow), drawerLayout)
+                R.id.songChatFragment, R.id.albumChatFragment, R.id.artistChatFragment, R.id.genreChatFragment, R.id.GetPremium, R.id.appSettingsActivity, R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow), drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
@@ -50,7 +50,6 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-
     fun settingsButton(view: View)                    //Settings Button Press
     {
         val intent = Intent(this, AppSettingsActivity::class.java)
@@ -58,6 +57,12 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+
+    fun getPremiumButton(item: MenuItem) {
+
+        val intent = Intent(this, GetPremium::class.java)
+        startActivity(intent)
+    }
 
 }
 
