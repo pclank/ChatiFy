@@ -6,8 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.chatify.R
+import kotlinx.android.synthetic.main.album_chat_fragment.*
+import kotlinx.android.synthetic.main.album_chat_fragment.view.*
+import kotlinx.android.synthetic.main.album_chat_fragment.view.editText
 
 
 class AlbumChatFragment : Fragment() {

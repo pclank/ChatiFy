@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
@@ -69,6 +70,19 @@ class MainActivity : AppCompatActivity() {
         if (premiumPackages.isNotEmpty()) {
             val intent = Intent(this, GetPremium::class.java)
             startActivity(intent)
+        }
+    }
+
+    public fun sendMessage(view: View)                                                // Tested for Album Chat Text-Box
+    {
+        val textView: TextView = findViewById<TextView>(R.id.editText)
+        var msg = textView.text.toString()
+
+        if (msg.isNotEmpty() && msg.length < 200)                               // Not Empty, 200 Character Limit
+        {
+            // TODO publish() Function
+
+            textView.text = ""                                                      // Clear Input Text-Box
         }
     }
 
