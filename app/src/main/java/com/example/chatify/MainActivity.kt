@@ -1,13 +1,15 @@
 package com.example.chatify
 
 import android.app.Activity
+import android.app.PendingIntent.getActivity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.view.inputmethod.InputMethodManager
+import android.widget.ListView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -23,6 +25,7 @@ import com.google.android.material.navigation.NavigationView
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
+    private lateinit var listView : ListView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,18 +80,55 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    fun hideKeyboard(activity: Activity)                                    // Hide Soft-Keyboard in Activity
+    {
+        val imm =
+            activity.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        //Find the currently focused view, so we can grab the correct window token from it.
+        var view = activity.currentFocus
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = View(activity)
+        }
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+
+    fun hideKeyboardFrom(                                                   // Hide Soft-Keyboard in Fragment
+        context: Context,
+        view: View
+    )
+    {
+        val imm: InputMethodManager =
+            context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+
     public fun sendMessage(view: View)                                                // Tested for Album Chat Text-Box
     {
         val textView: TextView = findViewById<TextView>(R.id.editText)
         val msg = textView.text.toString()
 
+        hideKeyboard(this)
+
         if (msg.isNotEmpty() && msg.length < 200)                               // Not Empty, 200 Character Limit
         {
-            // TODO publish() Function
-            // publishMessage(msg)
+            val chatMessage: ChatMessage = ChatMessage()                            // Create ChatMessage Object
+            chatMessage.setTxt(msg)
+
+            val arr : ArrayList<ChatMessage> = ArrayList()
+            arr.add(chatMessage)
+
+            publishMessage(arr)
 
             textView.text = ""                                                      // Clear Input Text-Box
         }
+    }
+
+    private fun publishMessage(msg: ArrayList<ChatMessage>)
+    {
+        listView = findViewById(R.id.messages_view)
+        val adapter = MessageAdapter(this, msg)
+        listView.adapter = adapter
     }
 
 }

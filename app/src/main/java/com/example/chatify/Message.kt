@@ -6,5 +6,8 @@ open class Message
     var timestamp: String = ""
     var msg_id: Int? = null
 
-
+    fun setTxt(msg: String)
+    {
+        text = msg
+    }
 }
