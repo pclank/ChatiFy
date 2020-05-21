@@ -1,7 +1,10 @@
 package com.example.chatify
 
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -15,6 +18,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -76,15 +80,15 @@ class MainActivity : AppCompatActivity() {
     public fun sendMessage(view: View)                                                // Tested for Album Chat Text-Box
     {
         val textView: TextView = findViewById<TextView>(R.id.editText)
-        var msg = textView.text.toString()
+        val msg = textView.text.toString()
 
         if (msg.isNotEmpty() && msg.length < 200)                               // Not Empty, 200 Character Limit
         {
             // TODO publish() Function
+            // publishMessage(msg)
 
             textView.text = ""                                                      // Clear Input Text-Box
         }
     }
 
 }
-
