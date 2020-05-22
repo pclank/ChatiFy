@@ -32,6 +32,7 @@
     <string name="card_name">Name on Card</string>
     <string name="exp_date">Expiration Date</string>
     <string name="CVV">CVV</string>
+    <string name="confirm_card">Confirm</string>
 
     <string name="app_set">App Settings</string>
     <string name="acc_set">Account Settings</string>
