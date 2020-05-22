@@ -28,7 +28,6 @@ class AlbumChatFragment : Fragment() {
     ): View? {
         (activity as AppCompatActivity).supportActionBar?.title = "Album Chat"                     //Set Title
 
-
         return inflater.inflate(R.layout.album_chat_fragment, container, false)
     }
 
@@ -37,5 +36,7 @@ class AlbumChatFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(AlbumChatViewModel::class.java)
         // TODO: Use the ViewModel
     }
+
+
 
 }

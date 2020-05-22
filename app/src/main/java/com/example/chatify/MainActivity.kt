@@ -1,17 +1,19 @@
 package com.example.chatify
 
 import android.app.Activity
-import android.app.PendingIntent.getActivity
 import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.AdapterView.OnItemLongClickListener
 import android.widget.ListView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -21,7 +23,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.chatify.ui.songChat.SongChatFragment
 import com.google.android.material.navigation.NavigationView
 import java.time.Instant
 import java.time.format.DateTimeFormatter
@@ -49,8 +50,6 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
     }
-
-
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -143,6 +142,8 @@ class MainActivity : AppCompatActivity() {
         val textView: TextView = findViewById<TextView>(R.id.editText)
         val msg = textView.text.toString()
 
+        itemListener()
+
         hideKeyboard(this)
 
         if (msg.isNotEmpty() && msg.length < 200)                               // Not Empty, 200 Character Limit
@@ -163,6 +164,17 @@ class MainActivity : AppCompatActivity() {
         listView = findViewById(R.id.messages_view)
         val adapter = MessageAdapter(this, msg)
         listView.adapter = adapter
+    }
+
+    private fun itemListener()
+    {
+        // ChatMessage-Item LongClick-Listener Section
+        val lv: ListView = findViewById(R.id.messages_view)
+        lv.onItemLongClickListener =
+            OnItemLongClickListener { arg0, arg1, pos, id -> // TODO Auto-generated method stub
+                Toast.makeText(this, "Hello World$pos", Toast.LENGTH_LONG).show()
+                true
+            }
     }
 
 }
