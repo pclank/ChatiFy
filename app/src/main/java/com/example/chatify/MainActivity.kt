@@ -3,6 +3,7 @@ package com.example.chatify
 import android.app.Activity
 import android.app.ProgressDialog.show
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -26,6 +27,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
+import com.google.android.material.snackbar.Snackbar
 import java.time.Instant
 import java.time.format.DateTimeFormatter
 
@@ -187,9 +189,45 @@ class MainActivity : AppCompatActivity() {
         {
             setTitle("Flag Message")
             setMessage("Flag Message For Inappropriate Content?")
-            setPositiveButton("Confirm", null)
+
+            builder.setPositiveButton("Yes"){dialogInterface, which ->
+                val result: Boolean = flagMessage()
+
+                if (result)
+                {
+                    Snackbar.make(
+                        findViewById(R.id.messages_view),
+                        "Thank You For Your Report",
+                        Snackbar.LENGTH_SHORT
+                    ).show()
+                }
+                else
+                {
+                    Snackbar.make(
+                        findViewById(R.id.messages_view),
+                        "Report Failed",
+                        Snackbar.LENGTH_SHORT
+                    ).show()
+                }
+
+            }
+
+            builder.setNegativeButton("No"){dialogInterface, which ->
+                Snackbar.make(
+                    findViewById(R.id.messages_view),
+                    "Operation Canceled",
+                    Snackbar.LENGTH_SHORT
+                ).show()
+            }
+
             show()
         }
+    }
+
+    private fun flagMessage(): Boolean                                      // Message Reporter
+    {
+        // TODO Add Flagging Functionality
+        return true
     }
 
 }
