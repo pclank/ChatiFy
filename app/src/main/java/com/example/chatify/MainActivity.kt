@@ -1,6 +1,7 @@
 package com.example.chatify
 
 import android.app.Activity
+import android.app.ProgressDialog.show
 import android.content.Context
 import android.content.Intent
 import android.os.Build
@@ -15,6 +16,7 @@ import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
@@ -108,8 +110,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     // Chat Object For Presentation
-    @RequiresApi(Build.VERSION_CODES.O)
-    val timestamp: String = DateTimeFormatter.ISO_INSTANT.format(Instant.now()).toString()
+    // @RequiresApi(Build.VERSION_CODES.O)
+    private val timestamp: String = "PLACEHOLDER"
 
     private val ch1 = Chat("song", (0..49).random(), timestamp)                // Song
     private val ch2 = Chat("album", (0..49).random(), timestamp)                // Album
@@ -171,10 +173,23 @@ class MainActivity : AppCompatActivity() {
         // ChatMessage-Item LongClick-Listener Section
         val lv: ListView = findViewById(R.id.messages_view)
         lv.onItemLongClickListener =
-            OnItemLongClickListener { arg0, arg1, pos, id -> // TODO Auto-generated method stub
-                Toast.makeText(this, "Hello World$pos", Toast.LENGTH_LONG).show()
+            OnItemLongClickListener { arg0, arg1, pos, id ->
+                // Debug Purposes: Toast.makeText(this, "Hello World$pos", Toast.LENGTH_LONG).show()
+                itemDialog(id)
                 true
             }
+    }
+
+    private fun itemDialog(id: Long)
+    {
+        val builder = AlertDialog.Builder(this)
+        with(builder)
+        {
+            setTitle("Flag Message")
+            setMessage("Flag Message For Inappropriate Content?")
+            setPositiveButton("Confirm", null)
+            show()
+        }
     }
 
 }
