@@ -103,6 +103,8 @@ class MainActivity : AppCompatActivity() {
         imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
+    val ch1 = Chat()
+
     public fun sendMessage(view: View)                                                // Tested for Album Chat Text-Box
     {
         val textView: TextView = findViewById<TextView>(R.id.editText)
@@ -115,10 +117,9 @@ class MainActivity : AppCompatActivity() {
             val chatMessage: ChatMessage = ChatMessage()                            // Create ChatMessage Object
             chatMessage.setTxt(msg)
 
-            val arr : ArrayList<ChatMessage> = ArrayList()
-            arr.add(chatMessage)
+            ch1.message_array.add(chatMessage)
 
-            publishMessage(arr)
+            publishMessage(ch1.message_array)
 
             textView.text = ""                                                      // Clear Input Text-Box
         }
