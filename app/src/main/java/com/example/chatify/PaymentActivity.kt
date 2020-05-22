@@ -16,46 +16,32 @@ class PaymentActivity : AppCompatActivity() {
 
 
     fun confirmCardInfo(view: View) {
+        card_holder_name_input.setText(card_holder_name_input.text.toString().toUpperCase());
         val cardNumber = card_number_input.text.toString()
         val cardName = card_holder_name_input.text.toString()
         val expDate = exp_date_input.text.toString()
         val cvv = cvv_input.text.toString()
 
-
+        val builder = AlertDialog.Builder(this)
+        builder.setPositiveButton("OK", null)
 
         if (!(cardNumber.length != 16 || cardName.isEmpty() || expDate.isEmpty() || cvv.length < 3)) {
             val rnds = (0..10).random()
             if (rnds < 9) {
                 // TODO enable premium features
-                val builder = AlertDialog.Builder(this)
-                with(builder)
-                {
-                    setTitle("Payment Successful")
-                    setMessage("Congratulations, you have upgraded to ChatiFy Premium")
-                    setPositiveButton("OK", null)
-                    show()
-                }
+                builder.setTitle("Payment Successful")
+                builder.setMessage("Congratulations, you have upgraded to ChatiFy Premium")
             }
             else {
-                val builder = AlertDialog.Builder(this)
-                with(builder)
-                {
-                    setTitle("Payment Failed")
-                    setMessage("Your card wasn't charged by the bank")
-                    setPositiveButton("OK", null)
-                    show()
-                }
+                builder.setTitle("Payment Failed")
+                builder.setMessage("Your card wasn't charged by the bank")
             }
         }
         else {
-            val builder = AlertDialog.Builder(this)
-            with(builder)
-            {
-                setTitle("Invalid Card Info")
-                setMessage("Please check your card credentials.")
-                setPositiveButton("OK", null)
-                show()
-            }
+            builder.setTitle("Invalid Card Info")
+            builder.setMessage("Please check your card credentials.")
         }
+
+        builder.show()
     }
 }
