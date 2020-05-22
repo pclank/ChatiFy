@@ -23,6 +23,7 @@
         <activity android:name=".GetPremium" />
         <activity android:name=".PaymentActivity" />
         <activity android:name=".AccSettings" />
+        <activity android:name=".SpotifyConnect" />
     </application>
 
 </manifest>
