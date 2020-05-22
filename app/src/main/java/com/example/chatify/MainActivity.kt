@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.PendingIntent.getActivity
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -11,6 +12,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.ListView
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
@@ -19,7 +21,10 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.chatify.ui.songChat.SongChatFragment
 import com.google.android.material.navigation.NavigationView
+import java.time.Instant
+import java.time.format.DateTimeFormatter
 
 
 class MainActivity : AppCompatActivity() {
@@ -80,7 +85,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun hideKeyboard(activity: Activity)                                    // Hide Soft-Keyboard in Activity
+    private fun hideKeyboard(activity: Activity)                                    // Hide Soft-Keyboard in Activity
     {
         val imm =
             activity.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -103,9 +108,37 @@ class MainActivity : AppCompatActivity() {
         imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
-    val ch1 = Chat()
+    // Chat Object For Presentation
+    @RequiresApi(Build.VERSION_CODES.O)
+    val timestamp: String = DateTimeFormatter.ISO_INSTANT.format(Instant.now()).toString()
 
-    public fun sendMessage(view: View)                                                // Tested for Album Chat Text-Box
+    private val ch1 = Chat("song", (0..49).random(), timestamp)                // Song
+    private val ch2 = Chat("album", (0..49).random(), timestamp)                // Album
+    private val ch3 = Chat("artist", (0..49).random(), timestamp)                // Artist
+    private val ch4 = Chat("genre", (0..49).random(), timestamp)                // Genre
+
+    // Fragment Identification Helper Functions
+    fun songClick(view: View)
+    {
+        sendMessage(view, ch1)
+    }
+
+    fun albumClick(view: View)
+    {
+        sendMessage(view, ch2)
+    }
+
+    fun artistClick(view: View)
+    {
+        sendMessage(view, ch3)
+    }
+
+    fun genreClick(view: View)
+    {
+        sendMessage(view, ch4)
+    }
+
+    private fun sendMessage(view: View, chat: Chat)                                                // Tested for Album Chat Text-Box
     {
         val textView: TextView = findViewById<TextView>(R.id.editText)
         val msg = textView.text.toString()
@@ -117,9 +150,9 @@ class MainActivity : AppCompatActivity() {
             val chatMessage: ChatMessage = ChatMessage()                            // Create ChatMessage Object
             chatMessage.setTxt(msg)
 
-            ch1.message_array.add(chatMessage)
+            chat.messageArray.add(chatMessage)
 
-            publishMessage(ch1.message_array)
+            publishMessage(chat.messageArray)
 
             textView.text = ""                                                      // Clear Input Text-Box
         }
