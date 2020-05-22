@@ -22,6 +22,7 @@
         <activity android:name=".AppSettingsActivity" />
         <activity android:name=".GetPremium" />
         <activity android:name=".PaymentActivity" />
+        <activity android:name=".AccSettings" />
     </application>
 
 </manifest>

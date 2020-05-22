@@ -38,6 +38,7 @@
             android:title="@string/app_set" />
         <item
             android:icon="@drawable/ic_menu_manage"
+            android:onClick="accountSettings"
             android:title="@string/acc_set" />
     </group>
 </menu>
