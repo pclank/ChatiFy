@@ -157,18 +157,21 @@ class MainActivity : AppCompatActivity() {
 
         if (msg.isNotEmpty() && msg.length < 200)                               // Not Empty, 200 Character Limit
         {
-            val chatMessage: ChatMessage = ChatMessage()                            // Create ChatMessage Object
+            val chatMessage: ChatMessage = ChatMessage("out")                            // Create ChatMessage Object
             chatMessage.setTxt(msg)
 
             chat.messageArray.add(chatMessage)
 
-            publishMessage(chat.messageArray)
+            publishMessage(chat.messageArray, chat)
 
             textView.text = ""                                                      // Clear Input Text-Box
+
+            // TODO DEMO ONLY
+            messageDemonstrator(chat)
         }
     }
 
-    private fun publishMessage(msg: ArrayList<ChatMessage>)
+    private fun publishMessage(msg: ArrayList<ChatMessage>, chat: Chat)
     {
         listView = findViewById(R.id.messages_view)
         val adapter = MessageAdapter(this, msg)
@@ -232,7 +235,38 @@ class MainActivity : AppCompatActivity() {
     private fun flagMessage(): Boolean                                      // Message Reporter
     {
         // TODO Add Flagging Functionality
+        // TODO Change Message to Removed Form
         return true
+    }
+
+    private fun messageDemonstrator(chat: Chat)                                        // Randomly Create Incoming-Messages
+    {
+        val rand: Int = (0..99).random()
+        val ch: ChatMessage = ChatMessage("in")
+
+        if (rand < 10)
+        {
+            ch.setTxt("I don't like the new album.")
+        }
+        else if (rand == 10 && rand < 40)
+        {
+            ch.setTxt("Listening to this makes gives me Goosebumps!")
+        }
+        else if (rand == 40 && rand < 60)
+        {
+            ch.setTxt("Check out What The Dead Men Say!")
+        }
+        else if (rand == 60 && rand < 80)
+        {
+            ch.setTxt("I love Djent!!!")
+        }
+        else
+        {
+            ch.setTxt("Nice!")
+        }
+
+        chat.messageArray.add(ch)
+        publishMessage(chat.messageArray, chat)
     }
 
 }
