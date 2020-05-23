@@ -5,6 +5,7 @@ import android.app.ProgressDialog.show
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -36,6 +37,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var listView : ListView
+
+    private var mediaPlayer: MediaPlayer? = null                            // MediaPlayer Object Initialization
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -266,6 +269,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         chat.messageArray.add(ch)
+
+        mediaPlayer = MediaPlayer.create(this, R.raw.cow_bell)
+        mediaPlayer?.setOnPreparedListener {}                           // Optional For Debugging Purposes
+        mediaPlayer?.start()
+
         publishMessage(chat.messageArray, chat)
     }
 
