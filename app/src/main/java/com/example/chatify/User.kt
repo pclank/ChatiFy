@@ -1,6 +1,6 @@
 package com.example.chatify
 
-class User
+open class User
 {
     var username: String? = ""
     var spotify_user: String? = null
