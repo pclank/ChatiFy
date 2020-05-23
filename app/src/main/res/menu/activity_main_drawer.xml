@@ -21,7 +21,7 @@
             android:id="@+id/genreChatFragment"
             android:title="@string/room3" />
         <item
-            android:id="@+id/favoriteArtistsActivity"
+            android:id="@+id/myFavouriteArtists"
             android:title="@string/fav_artists" />
         <item android:title="@string/get_recomm" />
     </group>

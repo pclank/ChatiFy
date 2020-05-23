@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(setOf(
-                R.id.songChatFragment, R.id.albumChatFragment, R.id.artistChatFragment, R.id.genreChatFragment, R.id.GetPremium, R.id.appSettingsActivity, R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow), drawerLayout)
+                R.id.songChatFragment, R.id.albumChatFragment, R.id.artistChatFragment, R.id.genreChatFragment, R.id.myFavouriteArtists, R.id.GetPremium, R.id.appSettingsActivity, R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow), drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
@@ -275,6 +275,24 @@ class MainActivity : AppCompatActivity() {
         mediaPlayer?.start()
 
         publishMessage(chat.messageArray, chat)
+    }
+
+    private fun defineArtists(spotify_user: String)
+    {
+        val artist_list: Array<String>? = getMyArtists(spotify_user)
+
+        if (artist_list != null)
+        {
+            // TODO Populate Radio Buttons on MyFavouriteArtists Page
+        }
+    }
+
+    private fun getMyArtists(spotify_user: String): Array<String>?
+    {
+        var artist_list: Array<String>? = null
+        //TODO Some Query To Receive Artists From Spotify
+
+        return artist_list
     }
 
 }

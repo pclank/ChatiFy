@@ -45,11 +45,6 @@
         android:name="com.example.chatify.AppSettingsActivity"
         android:label="AppSettingsActivity" />
     <fragment
-        android:id="@+id/appSettings"
-        android:name="com.example.chatify.ui.appsettings.AppSettings"
-        android:label="app_settings_fragment"
-        tools:layout="@layout/app_settings_fragment" />
-    <fragment
         android:id="@+id/songChatFragment"
         android:name="com.example.chatify.ui.songChat.SongChatFragment"
         android:label="song_chat_fragment"
@@ -66,4 +61,9 @@
         android:id="@+id/genreChatFragment"
         android:name="com.example.chatify.ui.genreChat.GenreChatFragment"
         android:label="GenreChatFragment" />
+    <fragment
+        android:id="@+id/myFavouriteArtists"
+        android:name="com.example.chatify.ui.myfavouriteartists.MyFavouriteArtists"
+        android:label="my_favourite_artists_fragment"
+        tools:layout="@layout/my_favourite_artists_fragment" />
 </navigation>

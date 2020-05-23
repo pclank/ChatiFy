@@ -63,4 +63,10 @@
     <string name="app_set_4">Screen Rotation Lock</string>
     <string name="user_message_default">Write a message</string>
     <string name="in_placeholder">Write a message</string>
+    <string name="artist_radio0">Meshuggah</string>
+    <string name="artist_radio3">Pink Floyd</string>
+    <string name="artist_radio2">Sabaton</string>
+    <string name="artist_radio1">System Of A Down</string>
+    <string name="artist_radio4">The Doors</string>
+    <string name="artist_radio5">Trivium</string>
 </resources>
