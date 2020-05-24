@@ -62,13 +62,6 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    fun settingsButton(view: View)                    //Settings Button Press
-    {
-        val intent = Intent(this, AppSettingsActivity::class.java)
-
-        startActivity(intent)
-    }
-
     private fun checkForPremiumPackages(): Array<String> {
         val foundPackages = arrayOf("package1", "package2", "package3");
         return foundPackages
@@ -102,7 +95,7 @@ class MainActivity : AppCompatActivity() {
         imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
-    fun hideKeyboardFrom(                                                   // Hide Soft-Keyboard in Fragment
+    fun hideKeyboardFrom(                                                           // Hide Soft-Keyboard in Fragment
         context: Context,
         view: View
     )
