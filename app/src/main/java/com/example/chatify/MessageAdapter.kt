@@ -1,11 +1,13 @@
 package com.example.chatify
 
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 
 class MessageAdapter(private val context: Context, private val msgArray: ArrayList<ChatMessage>) : BaseAdapter() {
 
@@ -20,8 +22,12 @@ class MessageAdapter(private val context: Context, private val msgArray: ArrayLi
         {
             val rowView = inflater.inflate(R.layout.in_message, parent, false)
             val bodyView = rowView.findViewById(R.id.message_body) as TextView
+            val nameView = rowView.findViewById(R.id.name) as TextView
+            val avatarView = rowView.findViewById(R.id.avatar) as View
 
             bodyView.text = msg.text
+            nameView.text = msg.user_name
+            avatarView.background = msg.avatar
 
             return rowView
         }

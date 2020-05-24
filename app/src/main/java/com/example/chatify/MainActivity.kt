@@ -1,14 +1,10 @@
 package com.example.chatify
 
 import android.app.Activity
-import android.app.ProgressDialog.show
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.media.MediaPlayer
-import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -16,11 +12,10 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView.OnItemLongClickListener
 import android.widget.ListView
 import android.widget.TextView
-import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -29,8 +24,6 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
-import java.time.Instant
-import java.time.format.DateTimeFormatter
 
 
 class MainActivity : AppCompatActivity() {
@@ -160,7 +153,7 @@ class MainActivity : AppCompatActivity() {
 
         if (msg.isNotEmpty() && msg.length < 200)                               // Not Empty, 200 Character Limit
         {
-            val chatMessage: ChatMessage = ChatMessage("out")                            // Create ChatMessage Object
+            val chatMessage: ChatMessage = ChatMessage("out", ContextCompat.getDrawable(this, R.drawable.in_avatar))                            // Create ChatMessage Object
             chatMessage.setTxt(msg)
 
             chat.messageArray.add(chatMessage)
@@ -245,30 +238,52 @@ class MainActivity : AppCompatActivity() {
     private fun messageDemonstrator(chat: Chat)                                        // Randomly Create Incoming-Messages
     {
         val rand: Int = (0..99).random()
-        val ch: ChatMessage = ChatMessage("in")
 
-        if (rand < 10)
+        if (rand < 20)
         {
+            val ch: ChatMessage = ChatMessage("in", ContextCompat.getDrawable(this, R.mipmap.demo_avatar_0))
+
             ch.setTxt("I don't like the new album.")
+            ch.user_name = "Holy66"
+
+            chat.messageArray.add(ch)
         }
-        else if (rand == 10 && rand < 40)
+        else if (rand == 20 && rand < 40)
         {
+            val ch: ChatMessage = ChatMessage("in", ContextCompat.getDrawable(this, R.mipmap.demo_avatar_2))
+
             ch.setTxt("Listening to this makes gives me Goosebumps!")
+            ch.user_name = "ThePclank"
+
+            chat.messageArray.add(ch)
         }
         else if (rand == 40 && rand < 60)
         {
+            val ch: ChatMessage = ChatMessage("in", ContextCompat.getDrawable(this, R.mipmap.demo_avatar_1))
+
             ch.setTxt("Check out What The Dead Men Say!")
+            ch.user_name = "NikNuct"
+
+            chat.messageArray.add(ch)
         }
         else if (rand == 60 && rand < 80)
         {
+            val ch: ChatMessage = ChatMessage("in", ContextCompat.getDrawable(this, R.mipmap.demo_avatar_3))
+
             ch.setTxt("I love Djent!!!")
+            ch.user_name = "LordDJENT"
+
+            chat.messageArray.add(ch)
         }
         else
         {
-            ch.setTxt("Nice!")
-        }
+            val ch: ChatMessage = ChatMessage("in", ContextCompat.getDrawable(this, R.mipmap.demo_avatar_4))
 
-        chat.messageArray.add(ch)
+            ch.setTxt("Nice!")
+            ch.user_name = "meinshred43"
+
+            chat.messageArray.add(ch)
+        }
 
         mediaPlayer = MediaPlayer.create(this, R.raw.cow_bell)
         mediaPlayer?.setOnPreparedListener {}                           // Optional For Debugging Purposes
