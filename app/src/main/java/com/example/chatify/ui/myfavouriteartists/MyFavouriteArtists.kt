@@ -9,6 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.example.chatify.R
+import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.get_premium.view.*
+import kotlinx.android.synthetic.main.my_favourite_artists_fragment.view.*
 
 
 class MyFavouriteArtists : Fragment() {
@@ -25,13 +28,15 @@ class MyFavouriteArtists : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+        val view = inflater.inflate(R.layout.my_favourite_artists_fragment, container, false)
+
         (activity as AppCompatActivity).supportActionBar?.title = "My Favorite Artists"                     //Set Title
 
-        // TODO (Revise): val button: Button = fragment.findViewById(R.id.save_changes_button)
+        view.save_changes_button.setOnClickListener { view ->
+            saveFavArtists()
+        }
 
-
-
-        return inflater.inflate(R.layout.my_favourite_artists_fragment, container, false)
+        return view
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -47,6 +52,14 @@ class MyFavouriteArtists : Fragment() {
         // TODO Save for User
 
         val related_info: String = getRelatedInfo(spotify_user)
+
+        view?.let {
+            Snackbar.make(
+                it,
+                "Changes Saved",
+                Snackbar.LENGTH_SHORT
+            ).show()
+        }
     }
 
     private fun getRelatedInfo(spotify_user: String): String                        // Most Likely JSON File
