@@ -165,6 +165,10 @@ class MainActivity : AppCompatActivity() {
         listView = findViewById(R.id.messages_view)
         val adapter = MessageAdapter(this, msg)
         listView.adapter = adapter
+
+        listView.post(Runnable {                                                    // Scroll Down to New Message
+            listView.smoothScrollToPosition(adapter.count)
+        })
     }
 
     private fun itemListener()
