@@ -50,7 +50,7 @@ class MyFavouriteArtists : Fragment() {
 
     var spotify_user: String = ""                       // TODO Setter-Getter to Get Info From Object User
 
-    fun saveFavArtists()
+    private fun saveFavArtists()
     {
         // TODO Save for User
 
