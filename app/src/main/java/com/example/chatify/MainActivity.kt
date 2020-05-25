@@ -165,6 +165,10 @@ class MainActivity : AppCompatActivity() {
         listView = findViewById(R.id.messages_view)
         val adapter = MessageAdapter(this, msg)
         listView.adapter = adapter
+
+        listView.post(Runnable { // Select the last row so it will scroll into view...
+            listView.setSelection(adapter.count)
+        })
     }
 
     private fun itemListener()
