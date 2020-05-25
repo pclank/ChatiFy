@@ -38,7 +38,8 @@ class HomeFragment : Fragment() {
 
             in 17..20-> text = "Good Evening, Random Citizen!"
 
-            in 21..5-> text = "Late Chatting, Random Citizen?"
+            in (21..23)-> text = "Late Chatting, Random Citizen?"
+            in (0..5)-> text = "Late Chatting, Random Citizen?"
         }
 
         homeViewModel.text.observe(viewLifecycleOwner, Observer {
