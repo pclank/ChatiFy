@@ -38,6 +38,8 @@
     <string name="spotify_password">Spotify password</string>
     <string name="spotify_submit">Submit</string>
 
+    <string name="verify_password">Verify your Password</string>
+
     <string name="app_set">App Settings</string>
     <string name="acc_set">Account Settings</string>
     <string name="title_activity_app_settings">Settings</string>

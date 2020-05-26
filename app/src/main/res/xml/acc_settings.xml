@@ -16,6 +16,10 @@
         android:onClick="connectSpotify"
         app:key="delete_account"
         app:summary="Delete your account and your personal data"
-        app:title="Delete Account" />
+        app:title="Delete Account" >
+        <intent
+            android:targetPackage="com.example.chatify"
+            android:targetClass="com.example.chatify.AccountDelete"/>
+    </Preference>
 
 </PreferenceScreen>
