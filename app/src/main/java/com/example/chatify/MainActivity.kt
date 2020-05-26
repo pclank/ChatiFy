@@ -26,6 +26,7 @@ import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 
 
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -231,6 +232,11 @@ class MainActivity : AppCompatActivity() {
     {
         // TODO Add Flagging Functionality
         // TODO Change Message to Removed Form
+
+        // TODO add report to moderator's pending reports
+        val intent = Intent(this, ReportPage::class.java)
+        startActivity(intent)
+
         return true
     }
 

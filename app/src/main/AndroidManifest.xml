@@ -25,6 +25,7 @@
         <activity android:name=".AccSettings" />
         <activity android:name=".SpotifyConnect" />
         <activity android:name=".AccountDelete" />
+        <activity android:name=".ReportPage" />
     </application>
 
 </manifest>
