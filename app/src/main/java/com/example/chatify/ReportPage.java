@@ -19,15 +19,15 @@ public class ReportPage extends AppCompatActivity implements MyRecyclerViewAdapt
         setContentView(R.layout.report_interface);
 
         // data to populate the RecyclerView with
-        ArrayList<String> reportReaons = new ArrayList<>();
-        reportReaons.add("Abusive Speech");
-        reportReaons.add("Spam");
-        reportReaons.add("Threatening");
+        ArrayList<String> reportReasons = new ArrayList<>();
+        reportReasons.add("Abusive Speech");
+        reportReasons.add("Spam");
+        reportReasons.add("Threatening");
 
         // set up the RecyclerView
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new MyRecyclerViewAdapter(this, reportReaons);
+        adapter = new MyRecyclerViewAdapter(this, reportReasons);
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
     }
