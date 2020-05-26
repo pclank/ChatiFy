@@ -230,6 +230,9 @@ class MainActivity : AppCompatActivity() {
     {
         // TODO Add Flagging Functionality
         // TODO Change Message to Removed Form
+        val intent = Intent(this, ReportPage::class.java)
+        startActivity(intent)
+
         return true
     }
 
