@@ -79,7 +79,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun accountSettings(item: MenuItem, defaultUser: User, defaultSession: Session) {
+    fun accountSettings(item: MenuItem) {
         val intent = Intent(this, AccSettings::class.java)
         startActivity(intent)
     }
