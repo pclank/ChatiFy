@@ -25,11 +25,22 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 
+// Spotify API Related
+import com.spotify.android.appremote.api.ConnectionParams
+import com.spotify.android.appremote.api.Connector
+import com.spotify.android.appremote.api.SpotifyAppRemote
+import com.spotify.protocol.client.Subscription
+import com.spotify.protocol.types.PlayerState
+import com.spotify.protocol.types.Track
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var listView : ListView
+
+    // Spotify API Related
+    private val clientId = "7c2ca86fb44741e18381e5846591837f"
+    private val redirectUri = ""
 
     private var mediaPlayer: MediaPlayer? = null                            // MediaPlayer Object Initialization
 
