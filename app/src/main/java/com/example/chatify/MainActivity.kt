@@ -33,6 +33,9 @@ class MainActivity : AppCompatActivity() {
 
     private var mediaPlayer: MediaPlayer? = null                            // MediaPlayer Object Initialization
 
+    val defaultUser = User()
+    val defaultSession = Session(defaultUser.user_id, defaultUser.premium_priv, false)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -48,7 +51,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.songChatFragment, R.id.albumChatFragment, R.id.artistChatFragment, R.id.genreChatFragment, R.id.myFavouriteArtists, R.id.GetPremium, R.id.appSettingsActivity, R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow), drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -77,7 +79,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun accountSettings(item: MenuItem) {
+    fun accountSettings(item: MenuItem, defaultUser: User, defaultSession: Session) {
         val intent = Intent(this, AccSettings::class.java)
         startActivity(intent)
     }

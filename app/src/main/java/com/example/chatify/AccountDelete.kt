@@ -6,13 +6,12 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.account_delete.*
 
+
 class AccountDelete : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.account_delete)
     }
-
-
 
     fun deleteAccount(view: View) {
         val password = editText2.text.toString()
@@ -20,10 +19,14 @@ class AccountDelete : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
         builder.setPositiveButton("OK", null)
 
+
         if (password.isNotEmpty()) {
             // TODO collect user data
-            // TODO delete user from DB
             // TODO delete user data
+            // TODO get defaultUser, defaultSession from main
+
+            // main.defaultUser.userDeletion()
+            // main.defaultSession.disconnectUser()
             builder.setTitle("Deletion Successful")
             builder.setMessage("Your account and user data have been deleted. " +
                     "You are now disconnected.")
