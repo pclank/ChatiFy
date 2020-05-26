@@ -14,9 +14,9 @@ class ReportPage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.report_interface)
-        reasonsList.add("Android MVP Introduction")
-        reasonsList.add("Learn RxJava")
-        reasonsList.add("Advance Kotlin")
+        reasonsList.add("Spam")
+        reasonsList.add("Abusive Speech")
+        reasonsList.add("Threatening a user")
         layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = RecyclerAdapter(this, reasonsList)

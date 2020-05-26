@@ -12,7 +12,7 @@ class RecyclerAdapter(private val context: ReportPage, private val reasonsList: 
     RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(context).inflate(R.layout.report_interface, parent, false))
+        return ViewHolder(LayoutInflater.from(context).inflate(R.layout.recyclerview_row, parent, false))
     }
 
     override fun getItemCount(): Int {
@@ -20,9 +20,9 @@ class RecyclerAdapter(private val context: ReportPage, private val reasonsList: 
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.reasonName?.text = reasonsList.get(position)
+        holder.reasonName?.text = reasonsList[position]
         holder.itemView.setOnClickListener {
-            Toast.makeText(context, reasonsList.get(position), Toast.LENGTH_LONG).show()
+            Toast.makeText(context, reasonsList[position], Toast.LENGTH_LONG).show()
         }
     }
 
