@@ -1,5 +1,7 @@
 package com.example.chatify
 
+import android.content.Intent.EXTRA_USER
+import android.content.pm.PackageInstaller.EXTRA_SESSION
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
@@ -7,13 +9,16 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.spotify_connect.*
 
 class SpotifyConnect : AppCompatActivity() {
+
+    var defaultUser: User = User()
+    var defaultSession: Session = Session(defaultUser, defaultUser.premium_priv, false)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.spotify_connect)
-    }
 
-    val defaultUser = intent.getSerializableExtra("user") as? User
-    val defaultSession = intent.getSerializableExtra("session") as? Session
+        defaultUser = intent.extras?.get("user") as User
+        defaultSession = intent.extras?.get("session") as Session
+    }
 
     fun submitSpotifyInfo(view: View) {
         val email = spotify_email_input.text.toString()

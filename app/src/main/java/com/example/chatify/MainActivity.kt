@@ -3,6 +3,8 @@ package com.example.chatify
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.Intent.EXTRA_USER
+import android.content.pm.PackageInstaller.EXTRA_SESSION
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
