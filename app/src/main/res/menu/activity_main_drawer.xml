@@ -23,7 +23,9 @@
         <item
             android:id="@+id/myFavouriteArtists"
             android:title="@string/fav_artists" />
-        <item android:title="@string/get_recomm" />
+        <item
+            android:id="@+id/newReleases"
+            android:title="@string/new_releases" />
     </group>
     <group android:id="@+id/options_group" >
         <item
