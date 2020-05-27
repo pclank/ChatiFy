@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.os.Handler
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -22,9 +23,9 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.chatify.ui.newReleases.NewReleases
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
-
 
 class MainActivity : AppCompatActivity() {
 
@@ -34,7 +35,7 @@ class MainActivity : AppCompatActivity() {
     private var mediaPlayer: MediaPlayer? = null                            // MediaPlayer Object Initialization
 
     val defaultUser = User()
-    val defaultSession = Session(defaultUser.user_id, defaultUser.premium_priv, false)
+    val defaultSession = Session(defaultUser, defaultUser.premium_priv, false)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +49,7 @@ class MainActivity : AppCompatActivity() {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(setOf(
-                R.id.songChatFragment, R.id.albumChatFragment, R.id.artistChatFragment, R.id.genreChatFragment, R.id.myFavouriteArtists, R.id.GetPremium, R.id.appSettingsActivity, R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow), drawerLayout)
+                R.id.songChatFragment, R.id.albumChatFragment, R.id.artistChatFragment, R.id.genreChatFragment, R.id.myFavouriteArtists, R.id.newReleases, R.id.GetPremium, R.id.appSettingsActivity, R.id.nav_home), drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
@@ -231,6 +232,8 @@ class MainActivity : AppCompatActivity() {
     {
         // TODO Add Flagging Functionality
         // TODO Change Message to Removed Form
+
+
         return true
     }
 
@@ -307,6 +310,29 @@ class MainActivity : AppCompatActivity() {
         //TODO Some Query To Receive Artists From Spotify
 
         return artist_list
+    }
+
+    fun getNewReleases(): Boolean                                        // Called On Switch to NewReleases Fragment
+    {
+        var spotify_user: String?
+        var result: Boolean = false
+
+        spotify_user = defaultSession.retSpotifyAccount()
+
+        if (defaultSession.isSpotifyLinked())
+        {
+            // TODO Spotify Query for New Releases
+            result = true
+        }
+        else                                                    // Spotify Isn't Connected
+        {
+            Handler().postDelayed({
+                val intent = Intent(this, SpotifyConnect::class.java)
+                startActivity(intent)
+            }, 4000)
+        }
+
+        return result
     }
 
 }

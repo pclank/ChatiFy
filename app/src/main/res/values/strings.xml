@@ -71,10 +71,5 @@
     <string name="artist_radio1">System Of A Down</string>
     <string name="artist_radio4">The Doors</string>
     <string name="artist_radio5">Trivium</string>
-
-    <!--Acc settings -->
-    <string name="app_not">Enable App Notifications</string>
-    <string name="CBC">Country Based Chat</string>
-    <string name="LBC">Language Based Chat</string>
-    <string name="SRL">Screen Rotation Lock</string>
+    <string name="new_releases">New Releases</string>
 </resources>
