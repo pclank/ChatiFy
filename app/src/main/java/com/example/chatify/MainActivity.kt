@@ -327,12 +327,20 @@ class MainActivity : AppCompatActivity() {
         else                                                    // Spotify Isn't Connected
         {
             Handler().postDelayed({
-                val intent = Intent(this, SpotifyConnect::class.java)
-                startActivity(intent)
+                displaySpotifyPage()
             }, 4000)
         }
 
         return result
+    }
+
+    private fun displaySpotifyPage()
+    {
+        val intent = Intent(this, SpotifyConnect::class.java)
+        intent.putExtra("session", defaultSession)                      // Pass Objects to Activity
+        intent.putExtra("user", defaultUser)
+
+        startActivity(intent)
     }
 
 }

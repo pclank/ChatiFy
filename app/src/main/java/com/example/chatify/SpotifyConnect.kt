@@ -12,6 +12,9 @@ class SpotifyConnect : AppCompatActivity() {
         setContentView(R.layout.spotify_connect)
     }
 
+    val defaultUser = intent.getSerializableExtra("user") as? User
+    val defaultSession = intent.getSerializableExtra("session") as? Session
+
     fun submitSpotifyInfo(view: View) {
         val email = spotify_email_input.text.toString()
         val password = spotify_password_input.text.toString()
@@ -27,8 +30,41 @@ class SpotifyConnect : AppCompatActivity() {
             // TODO enable spotify features
             builder.setTitle("Login successful")
             builder.setMessage("Spotify features are now accessible inside ChatiFy.")
+
+            confirmLogin(email, password)
         }
 
         builder.show()
+
     }
+
+    private fun confirmLogin(email: String, password: String)
+    {
+        // TODO Query Spotify to Check Credentials
+        var valid: Boolean = true                                   // TODO (Demo Only!)
+        if (valid)
+        {
+            setLinkedBool(email)
+        }
+        else
+        {
+            val builder = AlertDialog.Builder(this)
+            builder.setPositiveButton("OK", null)
+            builder.setTitle("Invalid Spotify Info")
+            builder.setMessage("Please check your Spotify credentials.")
+
+            builder.show()
+        }
+    }
+
+    private fun setLinkedBool(email: String)        // TODO Could Change to Username
+    {
+        if (defaultUser != null) {
+            defaultUser.spotify_user = email
+        }
+        if (defaultSession != null) {
+            defaultSession.spot_linked = true
+        }
+    }
+
 }
