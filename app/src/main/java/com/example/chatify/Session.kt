@@ -1,6 +1,8 @@
 package com.example.chatify
 
-class Session (private val user_id: Int, private val prem_ses: Boolean, var spot_linked: Boolean)
+import java.io.Serializable
+
+class Session (private val user: User, private val prem_ses: Boolean, var spot_linked: Boolean) : Serializable
 {
     val session_id: Int = (0..9999).random()            // TODO (Demonstration Purposes Only!)
     var ses_time: Float = 0F
@@ -14,5 +16,10 @@ class Session (private val user_id: Int, private val prem_ses: Boolean, var spot
     fun isSpotifyLinked(): Boolean                      // Can Be Omitted
     {
         return spot_linked
+    }
+
+    fun retSpotifyAccount(): String?
+    {
+        return user.spotify_user
     }
 }

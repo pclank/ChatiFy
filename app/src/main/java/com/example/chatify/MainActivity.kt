@@ -22,6 +22,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.chatify.ui.newReleases.NewReleases
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 
@@ -33,7 +34,7 @@ class MainActivity : AppCompatActivity() {
     private var mediaPlayer: MediaPlayer? = null                            // MediaPlayer Object Initialization
 
     val defaultUser = User()
-    val defaultSession = Session(defaultUser.user_id, defaultUser.premium_priv, false)
+    val defaultSession = Session(defaultUser, defaultUser.premium_priv, false)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -308,6 +309,27 @@ class MainActivity : AppCompatActivity() {
         //TODO Some Query To Receive Artists From Spotify
 
         return artist_list
+    }
+
+    fun getNewReleases(): Boolean                                        // Called On Switch to NewReleases Fragment
+    {
+        var spotify_user: String?
+        var result: Boolean = false
+
+        spotify_user = defaultSession.retSpotifyAccount()
+
+        if (defaultSession.isSpotifyLinked())
+        {
+            // TODO Spotify Query for New Releases
+            result = true
+        }
+        else                                                    // Spotify Isn't Connected
+        {
+            val intent = Intent(this, SpotifyConnect::class.java)
+            startActivity(intent)
+        }
+
+        return result
     }
 
 }

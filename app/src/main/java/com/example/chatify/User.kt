@@ -1,6 +1,8 @@
 package com.example.chatify
 
-open class User
+import java.io.Serializable
+
+open class User : Serializable
 {
     var username: String? = ""
     var spotify_user: String? = null
