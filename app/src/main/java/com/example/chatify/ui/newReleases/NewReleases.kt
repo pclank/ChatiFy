@@ -38,10 +38,9 @@ class NewReleases : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(NewReleasesViewModel::class.java)
 
-        val result: Boolean = (activity as MainActivity).getNewReleases()
-        val defaultSession: Session = (activity as MainActivity).defaultSession
+        val spotify_data: String = (activity as MainActivity).getNewReleases()
 
-        if (!result)
+        if (spotify_data == "FALSE")
         {
             view?.let { Snackbar.make(
                 it,
@@ -58,11 +57,14 @@ class NewReleases : Fragment() {
                 }, 1500)
             }
         }
+        else
+        {
+            displayNewReleases(spotify_data)
+        }
 
-        // TODO: Use the ViewModel
     }
 
-    fun displayNewReleases()
+    private fun displayNewReleases(spotify_data: String)
     {
         // TODO Add Functionality
     }

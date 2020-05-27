@@ -91,6 +91,9 @@ class MainActivity : AppCompatActivity() {
 
     fun accountSettings(item: MenuItem) {
         val intent = Intent(this, AccSettings::class.java)
+        intent.putExtra("session", defaultSession)                      // Pass Objects to Activity
+        intent.putExtra("user", defaultUser)
+
         startActivity(intent)
     }
 
@@ -189,7 +192,7 @@ class MainActivity : AppCompatActivity() {
         val lv: ListView = findViewById(R.id.messages_view)
         lv.onItemLongClickListener =
             OnItemLongClickListener { arg0, arg1, pos, id ->
-                // Debug Purposes: Toast.makeText(this, "Hello World$pos", Toast.LENGTH_LONG).show()
+
                 itemDialog(id)
                 true
             }
@@ -321,29 +324,28 @@ class MainActivity : AppCompatActivity() {
         return artist_list
     }
 
-    fun getNewReleases(): Boolean                                        // Called On Switch to NewReleases Fragment
+    fun getNewReleases(): String                                        // Called On Switch to NewReleases Fragment
     {
-        var spotify_user: String?
-        var result: Boolean = false
-
-        spotify_user = defaultSession.retSpotifyAccount()
+        var spotify_data: String = ""
 
         if (defaultSession.isSpotifyLinked())
         {
             // TODO Spotify Query for New Releases
-            result = true
+            spotify_data = "PLACEHOLDER"
         }
         else                                                    // Spotify Isn't Connected
         {
+            spotify_data = "FALSE"
+
             Handler().postDelayed({
                 displaySpotifyPage()
             }, 4000)
         }
 
-        return result
+        return spotify_data
     }
 
-    private fun displaySpotifyPage()
+    fun displaySpotifyPage()
     {
         val intent = Intent(this, SpotifyConnect::class.java)
         intent.putExtra("session", defaultSession)                      // Pass Objects to Activity
