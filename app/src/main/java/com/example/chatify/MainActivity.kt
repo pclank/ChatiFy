@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.os.Handler
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -325,8 +326,10 @@ class MainActivity : AppCompatActivity() {
         }
         else                                                    // Spotify Isn't Connected
         {
-            val intent = Intent(this, SpotifyConnect::class.java)
-            startActivity(intent)
+            Handler().postDelayed({
+                val intent = Intent(this, SpotifyConnect::class.java)
+                startActivity(intent)
+            }, 4000)
         }
 
         return result
