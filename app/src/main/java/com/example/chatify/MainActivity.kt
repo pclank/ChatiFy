@@ -36,8 +36,8 @@ class MainActivity : AppCompatActivity() {
 
     private var mediaPlayer: MediaPlayer? = null                            // MediaPlayer Object Initialization
 
-    val defaultUser = User()
-    val defaultSession = Session(defaultUser, defaultUser.premium_priv, false)
+    var defaultUser = User()
+    var defaultSession = Session(defaultUser, defaultUser.premium_priv, false)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,6 +54,13 @@ class MainActivity : AppCompatActivity() {
                 R.id.songChatFragment, R.id.albumChatFragment, R.id.artistChatFragment, R.id.genreChatFragment, R.id.myFavouriteArtists, R.id.newReleases, R.id.GetPremium, R.id.appSettingsActivity, R.id.nav_home), drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        if (intent.extras?.get("user") != null && intent.extras?.get("session") != null)
+        {
+            defaultUser = intent.extras?.get("user") as User
+            defaultSession = intent.extras?.get("session") as Session
+        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
