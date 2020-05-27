@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import com.example.chatify.R
 
 
@@ -21,6 +22,9 @@ class NewReleases : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        (activity as AppCompatActivity).supportActionBar?.title = "New Releases"                     //Set Title
+
         return inflater.inflate(R.layout.new_releases_fragment, container, false)
     }
 
