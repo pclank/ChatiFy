@@ -13,7 +13,9 @@ import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView.OnItemLongClickListener
+import android.widget.LinearLayout
 import android.widget.ListView
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -25,6 +27,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.example.chatify.ui.newReleases.NewReleases
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
@@ -332,6 +335,11 @@ class MainActivity : AppCompatActivity() {
         {
             // TODO Spotify Query for New Releases
             spotify_data = "PLACEHOLDER"
+
+            Handler().postDelayed({                                                 // TODO Could Omit
+                findViewById<ProgressBar>(R.id.releasesProgressBar).visibility = View.INVISIBLE
+                findViewById<RecyclerView>(R.id.releasesRecycler).visibility = View.VISIBLE
+            }, 4000)
         }
         else                                                    // Spotify Isn't Connected
         {
