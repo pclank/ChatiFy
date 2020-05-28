@@ -85,6 +85,8 @@ class NewReleases : Fragment() {
             createCalendar()
             }
 
+        builder?.setNegativeButton("No", null)
+
         builder?.setTitle("Add to Calendar")
         builder?.setMessage("Add New Releases to your Google Calendar?")
 
