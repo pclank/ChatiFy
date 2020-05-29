@@ -73,6 +73,8 @@ class NewReleases : Fragment() {
     private fun displayNewReleases(spotify_data: String)
     {
         // TODO Add Functionality
+
+
         Handler().postDelayed({
             displayNotifPopUp()
         }, 10000)
