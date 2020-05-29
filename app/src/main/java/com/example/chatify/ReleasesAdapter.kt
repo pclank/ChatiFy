@@ -20,11 +20,12 @@ class ReleasesAdapter(private val context: Context, private val releaseArray: Ar
 
         val rowView = inflater.inflate(R.layout.release, parent, false)
         val titleView = rowView.findViewById(R.id.release_title) as TextView
-        val artistView = rowView.findViewById(R.id.release_title) as TextView
+        val artistView = rowView.findViewById(R.id.release_artist) as TextView
         val dateView = rowView.findViewById(R.id.release_date) as TextView
 
         titleView.text = release.title
         artistView.text = release.artist
+        dateView.text = release.date
 
         return rowView
 

@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var listView : ListView
+    private lateinit var releasesListView: ListView
 
     private var mediaPlayer: MediaPlayer? = null                            // MediaPlayer Object Initialization
 
@@ -340,7 +341,7 @@ class MainActivity : AppCompatActivity() {
 
             Handler().postDelayed({                                                 // TODO Could Omit
                 findViewById<ProgressBar>(R.id.releasesProgressBar).visibility = View.INVISIBLE
-                findViewById<RecyclerView>(R.id.releasesRecycler).visibility = View.VISIBLE
+                findViewById<ListView>(R.id.releasesListView).visibility = View.VISIBLE
             }, 4000)
         }
         else                                                    // Spotify Isn't Connected
@@ -355,13 +356,33 @@ class MainActivity : AppCompatActivity() {
         return spotify_data
     }
 
-    fun displaySpotifyPage()
+    private fun displaySpotifyPage()
     {
         val intent = Intent(this, SpotifyConnect::class.java)
         intent.putExtra("session", defaultSession)                      // Pass Objects to Activity
         intent.putExtra("user", defaultUser)
 
         startActivity(intent)
+    }
+
+    fun releasesHelper()                                        // Helper Function For displayNewReleases Function
+    {
+        // TODO (Demo Purposes Only!)
+        val r1 = Release("The Division Bell", "Pink Floyd", "28 March 1994")
+        val r2 = Release("In Waves", "Trivium", "2 August 2011")
+        val r3 = Release("Morrison Hotel", "The Doors", "9 February 1970")
+        val r4 = Release("A Whiter Shade of Pale", "Procol Harum", "12 May 1967")
+
+        var releases: ArrayList<Release> = ArrayList()
+        releases.add(r1)
+        releases.add(r2)
+        releases.add(r3)
+        releases.add(r4)
+
+        releasesListView = findViewById(R.id.releasesListView)
+        val adapter = ReleasesAdapter(this, releases)
+
+        releasesListView.adapter = adapter
     }
 
 }

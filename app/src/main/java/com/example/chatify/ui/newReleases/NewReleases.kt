@@ -72,8 +72,8 @@ class NewReleases : Fragment() {
 
     private fun displayNewReleases(spotify_data: String)
     {
-        // TODO Add Functionality
-
+        // TODO (Configured For Demo Purposes!)
+        (activity as MainActivity).releasesHelper()
 
         Handler().postDelayed({
             displayNotifPopUp()
