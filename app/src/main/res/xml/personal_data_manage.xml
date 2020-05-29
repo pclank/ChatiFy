@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <Preference
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:key="open_contents"
+        app:summary="Download your app data"
+        app:title="Download App Data">
+
+    </Preference>
+    <Preference
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:key="open_contents"
+        app:summary="Delete your app data"
+        app:title="Delete App Data">
+
+    </Preference>
+</PreferenceScreen>
