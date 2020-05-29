@@ -3,6 +3,8 @@ package com.example.chatify
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.Intent.EXTRA_USER
+import android.content.pm.PackageInstaller.EXTRA_SESSION
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
@@ -11,7 +13,9 @@ import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView.OnItemLongClickListener
+import android.widget.LinearLayout
 import android.widget.ListView
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -23,6 +27,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.example.chatify.ui.newReleases.NewReleases
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
@@ -34,8 +39,8 @@ class MainActivity : AppCompatActivity() {
 
     private var mediaPlayer: MediaPlayer? = null                            // MediaPlayer Object Initialization
 
-    val defaultUser = User()
-    val defaultSession = Session(defaultUser, defaultUser.premium_priv, false)
+    var defaultUser = User()
+    var defaultSession = Session(defaultUser, defaultUser.premium_priv, false)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,6 +57,13 @@ class MainActivity : AppCompatActivity() {
                 R.id.songChatFragment, R.id.albumChatFragment, R.id.artistChatFragment, R.id.genreChatFragment, R.id.myFavouriteArtists, R.id.newReleases, R.id.GetPremium, R.id.appSettingsActivity, R.id.nav_home), drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        if (intent.extras?.get("user") != null && intent.extras?.get("session") != null)
+        {
+            defaultUser = intent.extras?.get("user") as User
+            defaultSession = intent.extras?.get("session") as Session
+        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -82,6 +94,9 @@ class MainActivity : AppCompatActivity() {
 
     fun accountSettings(item: MenuItem) {
         val intent = Intent(this, AccSettings::class.java)
+        intent.putExtra("session", defaultSession)                      // Pass Objects to Activity
+        intent.putExtra("user", defaultUser)
+
         startActivity(intent)
     }
 
@@ -180,7 +195,7 @@ class MainActivity : AppCompatActivity() {
         val lv: ListView = findViewById(R.id.messages_view)
         lv.onItemLongClickListener =
             OnItemLongClickListener { arg0, arg1, pos, id ->
-                // Debug Purposes: Toast.makeText(this, "Hello World$pos", Toast.LENGTH_LONG).show()
+
                 itemDialog(id)
                 true
             }
@@ -312,27 +327,39 @@ class MainActivity : AppCompatActivity() {
         return artist_list
     }
 
-    fun getNewReleases(): Boolean                                        // Called On Switch to NewReleases Fragment
+    fun getNewReleases(): String                                        // Called On Switch to NewReleases Fragment
     {
-        var spotify_user: String?
-        var result: Boolean = false
-
-        spotify_user = defaultSession.retSpotifyAccount()
+        var spotify_data: String = ""
 
         if (defaultSession.isSpotifyLinked())
         {
             // TODO Spotify Query for New Releases
-            result = true
+            spotify_data = "PLACEHOLDER"
+
+            Handler().postDelayed({                                                 // TODO Could Omit
+                findViewById<ProgressBar>(R.id.releasesProgressBar).visibility = View.INVISIBLE
+                findViewById<RecyclerView>(R.id.releasesRecycler).visibility = View.VISIBLE
+            }, 4000)
         }
         else                                                    // Spotify Isn't Connected
         {
+            spotify_data = "FALSE"
+
             Handler().postDelayed({
-                val intent = Intent(this, SpotifyConnect::class.java)
-                startActivity(intent)
+                displaySpotifyPage()
             }, 4000)
         }
 
-        return result
+        return spotify_data
+    }
+
+    fun displaySpotifyPage()
+    {
+        val intent = Intent(this, SpotifyConnect::class.java)
+        intent.putExtra("session", defaultSession)                      // Pass Objects to Activity
+        intent.putExtra("user", defaultUser)
+
+        startActivity(intent)
     }
 
 }

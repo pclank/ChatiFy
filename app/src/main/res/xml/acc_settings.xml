@@ -7,9 +7,9 @@
         app:key="connect_spotify"
         app:summary="Connect your Spotify account to enjoy full functionality"
         app:title="Connect with Spotify" >
-        <intent
-            android:targetPackage="com.example.chatify"
-            android:targetClass="com.example.chatify.SpotifyConnect"/>
+<!--        <intent-->
+<!--            android:targetPackage="com.example.chatify"-->
+<!--            android:targetClass="com.example.chatify.SpotifyConnect"/>-->
     </Preference>
     <Preference
         android:clickable="true"
